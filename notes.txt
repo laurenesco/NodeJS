@@ -1,0 +1,63 @@
+Initial notes on NodeJS
+
+This notesheet pulls heavily from https://www.freecodecamp.org/news/get-started-with-nodejs/.
+
+   -------------------------------------------------------------------------------------------------------------
+
+Importing modules:
+	You can import other modules (files) containing functions you wish to use. The syntax to include an external module is:
+
+	const myModule = require('./myModule.js');
+
+	In order to use functions in the included modules, they must be explicitly exported. This is done inside the module being imported using the following syntax:
+
+	module.exports = myFunction;
+
+	This command can only be called once, as each time it is called the previously assigned funtion is overwritten. Thus, to export multiple functions, the syntax is:
+
+	module.exports = {
+		foo: 'bar',
+		myFunction1: myFunction1,
+		myFunction2: myFunction2
+	};
+
+	-------------------------------------------------------------------------------------------------------------
+
+	Four popular built in modules:
+
+		OS 	- Provides information about the operating system
+		PATH 	- Provides utility functions for working with file paths
+		FS 	- File system operations such as reading and writing to files
+		HTTP 	- Create HTTP servers
+
+   -------------------------------------------------------------------------------------------------------------
+
+	Node.js utilizes the event driven programming paradigm. There are two major functions that need attention:
+	
+		emit() - causes and event to occur
+			ex: emit('someEvent');
+		on()   - listens for a particular event, triggering a function when it is detected 
+			ex: on('someEvent', someFunction)
+	
+	These funtions are from the module events, from the class EventEmitter. The module events must be imported to use the functions.
+
+	Note: the emit() function must always be defined after any on() functions that you want to be fired off for that emit(). Any function which is registered as a listener after the event has been emitted, will not be executed.
+
+	HTTP methods:
+
+      (C) POST: Inserts a resource in the server
+		(R) GET: Retrieves a resource from the server
+		(U) PUT: Updates an existing resource in the server
+		(D) DELETE: Deletes a resource from the server
+	
+	Common HTML status codes:
+
+		200: OK 
+		201: Created
+		204: No Content
+		400: Bad Request
+		401: Unauthorized
+		403: Forbidden
+		404: Not Found
+		500: Internal Server Error
+		503: Service Unavailable
